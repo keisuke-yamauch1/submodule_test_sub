@@ -1,0 +1,10 @@
+name: Dispatch
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          curl -X POST -H "Authorization: token ${{ secrets.AUTO_PR_TOKEN }}" -H "Accept: application/vnd.github.everest-preview+json" -d '{"event_type": "update-submodule"}' -i  https://api.github.com/repos/keisuke-yamauch1/submodule_test_main/dispatches
